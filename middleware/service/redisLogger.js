@@ -68,7 +68,7 @@ setLog = async (logData) => {
     if (err) {
       console.log(`Something went wrong while logging: ${err}`);
     } else {
-      console.log(`Reply ${reply}`);
+      console.log(`Reply ${reply} `);
     }
   });
 };
