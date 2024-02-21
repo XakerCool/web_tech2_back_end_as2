@@ -1,0 +1,4 @@
+1) Add controllers and views for: Authors, Books and Genres
+    1.1) Also add CRUD operations
+2) Add 2 additional routes and use LEFT JOIN to show - Author books (/author/:id/books) - Genre books (/genre/:id/books)
+3) Add WHATSAPP notification when book added

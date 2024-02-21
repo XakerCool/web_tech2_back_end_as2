@@ -1,0 +1,502 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "My Author Project CRUD",
+    "description": "My Author Project Application API",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Authors",
+      "description": "API for authors in the system"
+    }
+  ],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+
+  "paths": {
+    "/authors": {
+      "get": {
+        "tags": ["Authors"],
+        "summary": "Get all authors in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Authors"
+            }
+          }
+        }
+      }
+    },
+    "/authors/addAuthor": {
+      "post": {
+        "tags": [
+          "Authors"
+        ],
+        "summary": "Create new author in system",
+        "parameters": [
+          {
+            "name": "author",
+            "in": "body",
+            "description": "Author that we want to create",
+            "schema": {
+              "$ref": "#/definitions/Author"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "New author is created",
+            "schema": {
+              "$ref": "#/definitions/Author"
+            }
+          }
+        }
+      }
+    },
+    "/authors/{id}/update": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of author that we want to update",
+          "type": "integer"
+        }
+      ],
+      "put": {
+        "summary": "Update author with give ID",
+        "tags": ["Authors"],
+        "parameters": [
+          {
+            "name": "author",
+            "in": "body",
+            "description": "Author with new values of properties",
+            "schema": {
+              "$ref": "#/definitions/updateAuthor"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Author is updated",
+            "schema": {
+              "$ref": "#/definitions/Author"
+            }
+          }
+        }
+      }
+    },
+    "/authors/{id}/delete": {
+      "parameters": [
+        {
+          "name": "author_id",
+          "in": "path",
+          "required": true,
+          "description": "ID of author that we want to delete",
+          "type": "integer"
+        }
+      ],
+      "delete": {
+        "summary": "Delete author with given ID",
+        "tags": ["Authors"],
+        "responses": {
+          "200": {
+            "description": "Author is deleted",
+            "schema": {
+              "$ref": "#/definitions/Author"
+            }
+          }
+        }
+      }
+    },
+    "/genres": {
+      "get": {
+        "tags": ["Genres"],
+        "summary": "Get all genres in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Genres"
+            }
+          }
+        }
+      }
+    },
+    "/genres/addGenre": {
+      "post": {
+        "tags": [
+          "Genres"
+        ],
+        "summary": "Create new genre in system",
+        "parameters": [
+          {
+            "name": "genre",
+            "in": "body",
+            "description": "Genre that we want to create",
+            "schema": {
+              "$ref": "#/definitions/Genre"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "New genre is created",
+            "schema": {
+              "$ref": "#/definitions/Genre"
+            }
+          }
+        }
+      }
+    },
+    "/genres/{id}/update": {
+      "parameters": [
+        {
+          "name": "genre_id",
+          "in": "path",
+          "required": true,
+          "description": "ID of genre that we want to find",
+          "type": "integer"
+        }
+      ],
+      "put": {
+        "summary": "Update genre with give ID",
+        "tags": ["Genres"],
+        "parameters": [
+          {
+            "name": "genre",
+            "in": "body",
+            "description": "Genre with new values of properties",
+            "schema": {
+              "$ref": "#/definitions/updateGenre"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Genre is updated",
+            "schema": {
+              "$ref": "#/definitions/Genre"
+            }
+          }
+        }
+      }
+    },
+    "/genres/{id}/delete": {
+      "parameters": [
+        {
+          "name": "genre_id",
+          "in": "path",
+          "required": true,
+          "description": "ID of genre that we want to delete",
+          "type": "integer"
+        }
+      ],
+      "delete": {
+        "summary": "Delete genre with given ID",
+        "tags": ["Genres"],
+        "responses": {
+          "200": {
+            "description": "Genre is deleted",
+            "schema": {
+              "$ref": "#/definitions/Genre"
+            }
+          }
+        }
+      }
+    },
+    "/books": {
+      "get": {
+        "tags": ["Books"],
+        "summary": "Get all books in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Books"
+            }
+          }
+        }
+      }
+    },
+    "/books/addBook": {
+      "post": {
+        "tags": [
+          "Books"
+        ],
+        "summary": "Create new book in system",
+        "parameters": [
+          {
+            "name": "book",
+            "in": "body",
+            "description": "Book that we want to create",
+            "schema": {
+              "$ref": "#/definitions/Book"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "New book is created",
+            "schema": {
+              "$ref": "#/definitions/Book"
+            }
+          }
+        }
+      }
+    },
+    "/books/{id}/update": {
+      "parameters": [
+        {
+          "name": "book_id",
+          "in": "path",
+          "required": true,
+          "description": "ID of book that we want to update",
+          "type": "integer"
+        }
+      ],
+      "put": {
+        "summary": "Update book with give ID",
+        "tags": ["Books"],
+        "parameters": [
+          {
+            "name": "book",
+            "in": "body",
+            "description": "Book with new values of properties",
+            "schema": {
+              "$ref": "#/definitions/updateBook"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Book is updated",
+            "schema": {
+              "$ref": "#/definitions/Book"
+            }
+          }
+        }
+      }
+    },
+    "/books/{id}/delete": {
+      "parameters": [
+        {
+          "name": "book_id",
+          "in": "path",
+          "required": true,
+          "description": "ID of book that we want to delete",
+          "type": "integer"
+        }
+      ],
+      "delete": {
+        "summary": "Delete book with given ID",
+        "tags": ["Books"],
+        "responses": {
+          "200": {
+            "description": "Book is deleted",
+            "schema": {
+              "$ref": "#/definitions/Book"
+            }
+          }
+        }
+      }
+    },
+    "/logs": {
+      "get": {
+        "tags": ["Logs"],
+        "summary": "Get logs",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Logs"
+            }
+          }
+        }
+      }
+    },
+    "/logs/clear": {
+      "delete": {
+        "summary": "Clear logs",
+        "tags": ["Logs"],
+        "responses": {
+          "200": {
+            "description": "Logs are deleted"
+          }
+        }
+      }
+    }
+  },
+
+  "definitions": {
+    "Author": {
+      "required": ["author_id", "name", "surname", "birthday"],
+      "properties": {
+        "author_id": {
+          "type": "integer",
+          "uniqueItems": true
+        },
+        "name": {
+          "type": "string"
+        },
+        "surname": {
+          "type": "string"
+        },
+        "birthday": {
+          "type": "string"
+        }
+      }
+    },
+    "Authors": {
+      "type": "array",
+      "$ref": "#/definitions/Author"
+    },
+    "updateAuthor": {
+      "required": ["name", "surname"],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "surname": {
+          "type": "string"
+        }
+      }
+    },
+    "deleteAuthor": {
+      "required": ["author_id"],
+      "properties": {
+        "author_id": {
+          "type": "integer"
+        }
+      }
+    },
+    "Genre": {
+      "required": ["genre_id", "genre_name"],
+      "properties": {
+        "genre_id": {
+          "type": "integer",
+          "uniqueItems": true
+        },
+        "genre_name": {
+          "type": "string"
+        }
+      }
+    },
+    "Genres": {
+      "type": "array",
+      "$ref": "#/definitions/Genre"
+    },
+    "updateGenre": {
+      "required": ["genre_name"],
+      "properties": {
+        "genre_name": {
+          "type": "string"
+        }
+      }
+    },
+    "deleteGenre": {
+      "required": ["genre_id"],
+      "properties": {
+        "genre_id": {
+          "type": "integer"
+        }
+      }
+    },
+    "Book": {
+      "required": ["book_id", "title", "publish_year", "page_count", "price"],
+      "properties": {
+        "book_id": {
+          "type": "integer",
+          "uniqueItems": true
+        },
+        "title": {
+          "type": "string"
+        },
+        "publish_year": {
+          "type": "string"
+        },
+        "page_count": {
+          "type": "integer"
+        },
+        "price": {
+          "type": "integer"
+        }
+      }
+    },
+    "Books": {
+      "type": "array",
+      "$ref": "#/definitions/Book"
+    },
+    "updateBook": {
+      "required": ["book_id", "title", "publish_year", "page_count", "price"],
+      "properties": {
+        "book_id": {
+          "type": "integer",
+          "uniqueItems": true
+        },
+        "title": {
+          "type": "string"
+        },
+        "publish_year": {
+          "type": "string"
+        },
+        "page_count": {
+          "type": "integer"
+        },
+        "price": {
+          "type": "integer"
+        }
+      }
+    },
+    "deleteBook": {
+      "required": ["book_id"],
+      "properties": {
+        "book_id": {
+          "type": "integer"
+        }
+      }
+    },
+    "Log": {
+      "required": ["logType", "logDate", "logUsedRoute", "logUserIP", "message"],
+      "properties": {
+        "logType": {
+          "type": "string"
+        },
+        "logDate": {
+          "type": "string"
+        },
+        "logUsedRoute": {
+          "type": "string"
+        },
+        "logUserIP": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "Logs": {
+      "type": "array",
+      "$ref": "#/definitions/Log"
+    }
+  }
+}
