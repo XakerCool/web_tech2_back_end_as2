@@ -343,6 +343,142 @@
           }
         }
       }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Login",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "User to login",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "User login successfully!",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+    },
+    "/auth/register": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Register",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "User to register",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "User register successfully!",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+    },
+    "/auth/password-recovery": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Password-recovery",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "User to password recovery",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Redirect to sendOTP"
+          }
+        }
+      }
+    },
+    "/auth/send-OTP": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Sending OTP to user whatsapp number",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "User to password recovery",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Redirect to set new password"
+          }
+        }
+      }
+    },
+    "/auth/set-new-password": {
+      "put": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Setting new user password",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "User to password recovery",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Password recovery success!"
+          }
+        }
+      }
     }
   },
 
@@ -497,6 +633,26 @@
     "Logs": {
       "type": "array",
       "$ref": "#/definitions/Log"
+    },
+    "User": {
+      "required": ["email", "full_name", "password", "phone_number", "role"],
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "full_name": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "phone_number": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        }
+      }
     }
   }
 }

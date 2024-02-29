@@ -20,7 +20,7 @@ exports.clearLogs = async () => {
   try {
     await client.flushAll();
   } catch (error) {
-    console.log(error.message);
+    console.log(error.message + " ");
   }
 };
 

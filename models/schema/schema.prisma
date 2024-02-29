@@ -27,6 +27,15 @@ model Authors {
   birthday  DateTime
 }
 
+model Users {
+  id           Int     @id @default(autoincrement())
+  full_name    String?
+  role         String?
+  email        String?
+  password     String?
+  phone_number String?
+}
+
 datasource db {
   provider = "mysql"
   url      = "mysql://root:root@localhost:3306/library"
